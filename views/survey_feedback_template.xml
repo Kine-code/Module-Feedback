@@ -1,0 +1,30 @@
+<odoo>
+  <template id="template_feedback_form" name="Survey Feedback Form">
+    <t t-call="web.basic_layout">
+      <div id="feedback-container" class="container text-center py-5" style="min-height:100vh;">
+        <input type="hidden" id="kiosk-location" value="CTSV"/>
+
+        <h2 class="mb-4">Bạn đánh giá trải nghiệm tư vấn như thế nào?</h2>
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-6 col-md-3 my-2">
+            <button class="btn btn-success btn-lg w-100 feedback-button" data-feedback="good">Tốt 😊</button>
+          </div>
+          <div class="col-6 col-md-3 my-2">
+            <button class="btn btn-primary btn-lg w-100 feedback-button" data-feedback="fair">Khá 🙂</button>
+          </div>
+          <div class="col-6 col-md-3 my-2">
+            <button class="btn btn-warning btn-lg w-100 feedback-button" data-feedback="average">Trung bình 😐</button>
+          </div>
+          <div class="col-6 col-md-3 my-2">
+            <button class="btn btn-danger btn-lg w-100 feedback-button" data-feedback="bad">Kém 😞</button>
+          </div>
+        </div>
+
+        <div id="thank-you-message" class="d-none">
+          <h3 class="text-success">🎉 Cảm ơn bạn đã phản hồi!</h3>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>

@@ -1,0 +1,62 @@
+<odoo>
+  <!-- Tree View -->
+  <record id="view_survey_feedback_tree" model="ir.ui.view">
+    <field name="name">survey.feedback.tree</field>
+    <field name="model">survey.feedback</field>
+    <field name="arch" type="xml">
+      <tree string="Phản hồi khách hàng" default_order="submitted_at desc">
+        <field name="submitted_at"/>
+        <field name="feedback"/>
+        <field name="kiosk_location"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Graph View -->
+  <record id="view_survey_feedback_graph" model="ir.ui.view">
+    <field name="name">survey.feedback.graph</field>
+    <field name="model">survey.feedback</field>
+    <field name="arch" type="xml">
+      <graph string="Biểu đồ phản hồi" type="bar">
+        <field name="feedback" type="row"/>
+        <field name="submitted_at" type="col" interval="day"/>
+        <field name="id" type="measure"/>
+      </graph>
+    </field>
+  </record>
+
+  <!-- Pivot View -->
+  <record id="view_survey_feedback_pivot" model="ir.ui.view">
+    <field name="name">survey.feedback.pivot</field>
+    <field name="model">survey.feedback</field>
+    <field name="arch" type="xml">
+      <pivot string="Thống kê phản hồi">
+        <field name="submitted_at" interval="day"/>
+        <field name="feedback"/>
+        <field name="kiosk_location"/>
+        <field name="count" type="measure"/>
+    </pivot>
+    </field>
+  </record>
+
+  <!-- Action -->
+  <record id="action_survey_feedback" model="ir.actions.act_window">
+    <field name="name">Phản hồi</field>
+    <field name="res_model">survey.feedback</field>
+    <field name="view_mode">tree,graph,pivot</field>
+    <field name="context">{}</field>
+  </record>
+
+  <!-- Menu -->
+  <menuitem id="menu_survey_feedback_root" 
+            name="Survey Feedback" 
+            sequence="10"
+            web_icon="survey_feedback,static/description/icon.png"
+            />
+            
+  <menuitem id="menu_survey_feedback_feedbacks"
+            name="Phản hồi"
+            parent="menu_survey_feedback_root"
+            action="action_survey_feedback"
+            sequence="1"/>
+</odoo>

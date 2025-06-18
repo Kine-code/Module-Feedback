@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_survey_feedback_admin,survey.feedback admin,model_survey_feedback,base.group_system,1,1,1,1
+access_survey_feedback_user,survey.feedback user,model_survey_feedback,base.group_user,1,0,0,0
+access_survey_feedback_public,survey.feedback public,model_survey_feedback,base.group_public,0,0,1,0

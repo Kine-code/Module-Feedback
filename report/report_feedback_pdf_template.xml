@@ -1,0 +1,31 @@
+<odoo>
+  <template id="report_feedback_pdf">
+    <t t-call="web.external_layout">
+      <div class="page">
+        <h2 class="text-center">BÁO CÁO PHẢN HỒI KHÁCH HÀNG</h2>
+        <p><strong>Ngày giờ in:</strong> <t t-esc="format_datetime(o.submitted_at, 'datetime')"/></p>
+        <p><strong>Quầy:</strong> <t t-esc="o.kiosk_location or 'Không xác định'"/></p>
+        <hr/>
+
+        <table class="table table-sm mt-4">
+          <thead>
+            <tr>
+              <th>Thời gian</th>
+              <th>Đánh giá</th>
+              <th>Quầy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <t t-foreach="docs" t-as="rec">
+              <tr>
+                <td><t t-esc="format_datetime(rec.submitted_at, 'datetime')"/></td>
+                <td><t t-esc="dict(rec._fields['feedback'].selection).get(rec.feedback)"/></td>
+                <td><t t-esc="rec.kiosk_location or 'N/A'"/></td>
+              </tr>
+            </t>
+          </tbody>
+        </table>
+      </div>
+    </t>
+  </template>
+</odoo>

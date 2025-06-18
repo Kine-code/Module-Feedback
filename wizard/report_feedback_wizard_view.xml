@@ -1,0 +1,33 @@
+<odoo>
+  <record id="view_report_feedback_wizard_form" model="ir.ui.view">
+    <field name="name">report.feedback.wizard.form</field>
+    <field name="model">report.feedback.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Tạo báo cáo phản hồi">
+        <group>
+          <field name="date_from"/>
+          <field name="date_to"/>
+          <field name="kiosk_location"/>
+        </group>
+        <footer>
+            <button name="print_report" string="In báo cáo" type="object" class="btn-primary"/>
+            <button name="export_csv" string="Xuất CSV" type="object" class="btn-secondary"/>
+            <button string="Đóng" special="cancel" class="btn-light"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_report_feedback_wizard" model="ir.actions.act_window">
+    <field name="name">Báo cáo phản hồi</field>
+    <field name="res_model">report.feedback.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+  </record>
+
+  <menuitem id="menu_survey_feedback_report_wizard"
+            name="In báo cáo theo ngày"
+            parent="menu_survey_feedback_root"
+            action="action_report_feedback_wizard"
+            sequence="5"/>
+</odoo>
