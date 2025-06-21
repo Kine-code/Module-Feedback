@@ -20,10 +20,7 @@ class SurveyFeedback(models.Model):
         readonly=True
     )
 
-    kiosk_location = fields.Char(
-        string='Quầy tư vấn',
-        help='Tên quầy hoặc khu vực gửi phản hồi'
-    )
+    kiosk_group_id = fields.Many2one('survey.feedback.group', string='Quầy phản hồi')
 
     count = fields.Integer(string='Count', default=1, store=True)
 

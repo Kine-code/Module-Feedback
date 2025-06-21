@@ -12,7 +12,7 @@ odoo.define('survey_feedback.submit', function (require) {
         _onFeedbackClick: function (ev) {
             const self = this;
             const feedback = ev.currentTarget.dataset.feedback;
-            const kioskLocation = document.getElementById('kiosk-location')?.value || '';
+            const groupId = document.getElementById('group-id')?.value || '';
 
             // Disable all buttons to prevent double click
             this.$el.find('.feedback-button').prop('disabled', true);
@@ -21,7 +21,7 @@ odoo.define('survey_feedback.submit', function (require) {
                 route: '/survey_feedback/submit',
                 params: {
                     feedback: feedback,
-                    kiosk_location: kioskLocation,
+                    group_id: parseInt(groupId),
                 },
             }).then(function (result) {
                 if (result.status === 'ok') {

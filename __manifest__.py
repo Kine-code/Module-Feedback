@@ -17,6 +17,7 @@
 
         'views/survey_feedback_views.xml',
         'views/survey_feedback_template.xml',
+        'views/survey_feedback_menu.xml',
 
         'report/report_feedback_pdf_template.xml',
         'report/report_survey_feedback.xml',

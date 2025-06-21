@@ -7,7 +7,7 @@
       <tree string="Phản hồi khách hàng" default_order="submitted_at desc">
         <field name="submitted_at"/>
         <field name="feedback"/>
-        <field name="kiosk_location"/>
+        <field name="kiosk_group_id"/>
       </tree>
     </field>
   </record>
@@ -33,30 +33,10 @@
       <pivot string="Thống kê phản hồi">
         <field name="submitted_at" interval="day"/>
         <field name="feedback"/>
-        <field name="kiosk_location"/>
+        <field name="kiosk_group_id"/>
         <field name="count" type="measure"/>
     </pivot>
     </field>
   </record>
 
-  <!-- Action -->
-  <record id="action_survey_feedback" model="ir.actions.act_window">
-    <field name="name">Phản hồi</field>
-    <field name="res_model">survey.feedback</field>
-    <field name="view_mode">tree,graph,pivot</field>
-    <field name="context">{}</field>
-  </record>
-
-  <!-- Menu -->
-  <menuitem id="menu_survey_feedback_root" 
-            name="Survey Feedback" 
-            sequence="10"
-            web_icon="survey_feedback,static/description/icon.png"
-            />
-            
-  <menuitem id="menu_survey_feedback_feedbacks"
-            name="Phản hồi"
-            parent="menu_survey_feedback_root"
-            action="action_survey_feedback"
-            sequence="1"/>
 </odoo>

@@ -2,7 +2,7 @@
   <template id="template_feedback_form" name="Survey Feedback Form">
     <t t-call="web.basic_layout">
       <div id="feedback-container" class="container text-center py-5" style="min-height:100vh;">
-        <input type="hidden" id="kiosk-location" value="CTSV"/>
+        <input type="hidden" id="group-id" t-att-value="feedback_group_id"/>
 
         <h2 class="mb-4">Bạn đánh giá trải nghiệm tư vấn như thế nào?</h2>
 

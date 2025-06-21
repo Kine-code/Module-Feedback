@@ -1,0 +1,25 @@
+<odoo>
+<!-- Action -->
+    <record id="action_survey_feedback" model="ir.actions.act_window">
+        <field name="name">Phản hồi</field>
+        <field name="res_model">survey.feedback</field>
+        <field name="view_mode">tree,graph,pivot</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_survey_feedback_root" 
+                name="Survey Feedback" 
+                sequence="10"
+                web_icon="survey_feedback,static/description/icon.png"/>
+    <menuitem id="menu_survey_feedback_feedbacks"
+                name="Phản hồi"
+                parent="menu_survey_feedback_root"
+                action="action_survey_feedback"
+                sequence="1"/>
+    <menuitem id="menu_survey_feedback_report_wizard"
+                name="In báo cáo theo ngày"
+                parent="menu_survey_feedback_root"
+                action="action_report_feedback_wizard"
+                sequence="5"/>
+</odoo>
