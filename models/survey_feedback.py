@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api
 
-
 class SurveyFeedback(models.Model):
     _name = 'survey.feedback'
     _description = 'Phản hồi khách hàng tại quầy'
@@ -20,9 +19,16 @@ class SurveyFeedback(models.Model):
         readonly=True
     )
 
-    kiosk_group_id = fields.Many2one('survey.feedback.group', string='Quầy phản hồi')
+    kiosk_location = fields.Char(
+        string='Quầy tư vấn',
+        help='Tên quầy hoặc khu vực gửi phản hồi'
+    )
 
     count = fields.Integer(string='Count', default=1, store=True)
+
+    # Thêm liên kết sinh viên và nhóm CTSV
+    student_id = fields.Many2one('ctsv.student', string='Sinh viên')
+    ctsv_group_id = fields.Many2one('ctsv.group', string='Nhóm CTSV')
 
     @api.model
     def create(self, vals):
@@ -30,7 +36,6 @@ class SurveyFeedback(models.Model):
         return super(SurveyFeedback, self).create(vals)
     
     def name_get(self):
-        """Tùy chỉnh tên hiển thị trong tree view"""
         result = []
         for record in self:
             label = f"[{record.submitted_at.strftime('%Y-%m-%d %H:%M')}] - {dict(self._fields['feedback'].selection).get(record.feedback)}"

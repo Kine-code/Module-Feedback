@@ -1,30 +1,32 @@
 <odoo>
-  <template id="template_feedback_form" name="Survey Feedback Form">
-    <t t-call="web.basic_layout">
-      <div id="feedback-container" class="container text-center py-5" style="min-height:100vh;">
-        <input type="hidden" id="group-id" t-att-value="feedback_group_id"/>
+    <template id="template_feedback_form">
+        <div id="feedback-container">
+            <!-- Form nhập thông tin sinh viên -->
+            <div id="student-info-form">
+                <h4>Nhập thông tin Sinh viên</h4>
+                <input type="text" id="student-name" placeholder="Họ tên" required="required"/>
+                <input type="text" id="student-code" placeholder="Mã số sinh viên" required="required"/>
+                <input type="text" id="class-name" placeholder="Lớp"/>
 
-        <h2 class="mb-4">Bạn đánh giá trải nghiệm tư vấn như thế nào?</h2>
-
-        <div class="row justify-content-center mb-5">
-          <div class="col-6 col-md-3 my-2">
-            <button class="btn btn-success btn-lg w-100 feedback-button" data-feedback="good">Tốt 😊</button>
-          </div>
-          <div class="col-6 col-md-3 my-2">
-            <button class="btn btn-primary btn-lg w-100 feedback-button" data-feedback="fair">Khá 🙂</button>
-          </div>
-          <div class="col-6 col-md-3 my-2">
-            <button class="btn btn-warning btn-lg w-100 feedback-button" data-feedback="average">Trung bình 😐</button>
-          </div>
-          <div class="col-6 col-md-3 my-2">
-            <button class="btn btn-danger btn-lg w-100 feedback-button" data-feedback="bad">Kém 😞</button>
-          </div>
+                <select id="ctsv-group">
+                    <option value="">Chọn nhóm CTSV</option>
+                    <t t-foreach="groups" t-as="group">
+                        <option t-att-value="group.id"><t t-esc="group.name"/></option>
+                    </t>
+                </select>
+                <button id="start-feedback" type="button">Bắt đầu đánh giá</button>
+            </div>
+            <!-- Giao diện đánh giá -->
+            <div id="feedback-form" class="d-none">
+                <h4>Đánh giá chất lượng phục vụ</h4>
+                <div class="row">
+                    <button class="feedback-button btn btn-success" data-feedback="good">Tốt 😊</button>
+                    <button class="feedback-button btn btn-info" data-feedback="fair">Khá 🙂</button>
+                    <button class="feedback-button btn btn-warning" data-feedback="average">Trung bình 😐</button>
+                    <button class="feedback-button btn btn-danger" data-feedback="bad">Kém 😞</button>
+                </div>
+                <div id="thank-you-message" class="alert alert-success d-none mt-3">Cảm ơn bạn đã phản hồi!</div>
+            </div>
         </div>
-
-        <div id="thank-you-message" class="d-none">
-          <h3 class="text-success">🎉 Cảm ơn bạn đã phản hồi!</h3>
-        </div>
-      </div>
-    </t>
-  </template>
+    </template>
 </odoo>

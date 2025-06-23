@@ -1,42 +1,34 @@
 <odoo>
-  <!-- Tree View -->
   <record id="view_survey_feedback_tree" model="ir.ui.view">
     <field name="name">survey.feedback.tree</field>
     <field name="model">survey.feedback</field>
     <field name="arch" type="xml">
-      <tree string="Phản hồi khách hàng" default_order="submitted_at desc">
+      <tree>
         <field name="submitted_at"/>
         <field name="feedback"/>
-        <field name="kiosk_group_id"/>
+        <field name="student_id"/>
+        <field name="ctsv_group_id"/>
       </tree>
     </field>
   </record>
 
-  <!-- Graph View -->
-  <record id="view_survey_feedback_graph" model="ir.ui.view">
-    <field name="name">survey.feedback.graph</field>
+  <record id="view_survey_feedback_search" model="ir.ui.view">
+    <field name="name">survey.feedback.search</field>
     <field name="model">survey.feedback</field>
     <field name="arch" type="xml">
-      <graph string="Biểu đồ phản hồi" type="bar">
-        <field name="feedback" type="row"/>
-        <field name="submitted_at" type="col" interval="day"/>
-        <field name="id" type="measure"/>
-      </graph>
-    </field>
-  </record>
-
-  <!-- Pivot View -->
-  <record id="view_survey_feedback_pivot" model="ir.ui.view">
-    <field name="name">survey.feedback.pivot</field>
-    <field name="model">survey.feedback</field>
-    <field name="arch" type="xml">
-      <pivot string="Thống kê phản hồi">
-        <field name="submitted_at" interval="day"/>
+      <search>
         <field name="feedback"/>
-        <field name="kiosk_group_id"/>
-        <field name="count" type="measure"/>
-    </pivot>
+        <field name="ctsv_group_id"/>
+        <field name="student_id"/>
+        <filter name="today" string="Hôm nay" domain="[('submitted_at','&gt;=',context_today())]"/>
+      </search>
     </field>
   </record>
 
+  <record id="action_survey_feedback_dashboard" model="ir.actions.act_window">
+    <field name="name">Dashboard Phản hồi</field>
+    <field name="res_model">survey.feedback</field>
+    <field name="view_mode">graph,pivot,tree</field>
+    <field name="context">{}</field>
+  </record>
 </odoo>
