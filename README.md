@@ -6,4 +6,3 @@ Mô tả Module Survey feedback:
 - Quản trị viên:
 + Xem thống kê theo: ngày/tháng/năm
 + Có biểu đồ hoặc tổng hợp số lượt chọn theo từng mức đánh giá
-![image](https://github.com/user-attachments/assets/8741ae9d-a923-4089-8803-0fe937a99fd0)
